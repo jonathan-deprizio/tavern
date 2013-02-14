@@ -21,7 +21,7 @@ WIRELESS_PROVIDER = "verizonwireless"
 #  End of user-configurable options
 ####################
 
-WIRELESS_LOOKUP = {'verizonwireless':'vtext.com',}
+WIRELESS_LOOKUP = {'verizonwireless':'vtext.com','att':'txt.att.net'}
 
 import subprocess, smtplib, sys
 from email.mime.text import MIMEText
