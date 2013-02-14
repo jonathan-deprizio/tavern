@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
 # By Jonathan DePrizio, April 16, 2012
-# Licensed under "do whatever the hell you please with it" license.
+# Uploaded to Github on Feb 13, 2013
+# Released into the public domain
 
 ####################
 #  Configuration - this is required.
