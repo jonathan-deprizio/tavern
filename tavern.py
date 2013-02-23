@@ -94,7 +94,7 @@ if CONFIGITEMS["PHONETARGET"] != "undef":
 if CONFIGITEMS["EMAILTARGET"] != "undef":
 	DEST_EMAIL_ADDRESSES.append(CONFIGITEMS["EMAILTARGET"])
 
-print "EMailiing: " + str(DEST_EMAIL_ADDRESSES)
+print "EMailing: " + str(DEST_EMAIL_ADDRESSES)
 cmdExec = subprocess.Popen([opts.cmd], shell=True)
 rt = cmdExec.wait()
 
