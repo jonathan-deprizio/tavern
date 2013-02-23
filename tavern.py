@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 # By Jonathan DePrizio, April 16, 2012
 # Uploaded to Github on Feb 13, 2013
@@ -54,8 +54,6 @@ def parseConfigFile(configLines):
 			else:
 				print "Warning - Unrecognized configuration option: " + descriptor
 
-	print CONFIGITEMS
-	print "Done parsing config."
 
 options = OptionParser()
 options.add_option("-c", help="The command you want to run.", dest="cmd", default=None)
@@ -94,7 +92,6 @@ if CONFIGITEMS["PHONETARGET"] != "undef":
 if CONFIGITEMS["EMAILTARGET"] != "undef":
 	DEST_EMAIL_ADDRESSES.append(CONFIGITEMS["EMAILTARGET"])
 
-print "EMailing: " + str(DEST_EMAIL_ADDRESSES)
 cmdExec = subprocess.Popen([opts.cmd], shell=True)
 rt = cmdExec.wait()
 
