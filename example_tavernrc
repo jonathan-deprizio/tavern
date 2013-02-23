@@ -1,0 +1,25 @@
+# TAVERN configuraton file
+
+# default phone number to send messages to.
+# use the standard mobile XXX-XXX-XXXX but without the dashes.
+phoneNumber=5555555555
+
+# Default email address to send messages to. 
+
+#emailAddress=someguy@example.com
+
+# SMTP server.
+SMTPSERVER="smtp.gmail.com"
+
+# SMTP user's login name.
+SMTPUSER=""
+
+# SMTP user's password, if applicable.
+SMTPPASS=""
+
+# SMTP port.  Gmail likes 465; your internal server probably uses 25.
+SMTPPORT=465
+
+# Whether or not to use SSL when connecting to the SMTP server.  1 for SSL,
+# 0 for non-encrypted.  Note that gmail requires SSL.
+SMTPSSL=1 
