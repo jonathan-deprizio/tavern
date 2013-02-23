@@ -1,21 +1,21 @@
 # TAVERN configuraton file
 
 # default phone number to send messages to.
-# use the standard mobile XXX-XXX-XXXX but without the dashes.
-phoneNumber=5555555555
+PHONETARGET=XXXXXXXXXX
+WIRELESSPROVIDER=VerizonWireless
 
 # Default email address to send messages to. 
 
-#emailAddress=someguy@example.com
+#EMAILTARGET=someone@somewhere.com
 
 # SMTP server.
-SMTPSERVER="smtp.gmail.com"
+SMTPSERVER=smtp.gmail.com
 
 # SMTP user's login name.
-SMTPUSER=""
+SMTPUSER=someone@somewhere.com
 
 # SMTP user's password, if applicable.
-SMTPPASS=""
+SMTPPASS=
 
 # SMTP port.  Gmail likes 465; your internal server probably uses 25.
 SMTPPORT=465
