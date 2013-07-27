@@ -8,6 +8,7 @@
 ####################
 
 WIRELESS_LOOKUP = {	'VerizonWireless':'vtext.com',
+			'VerizonPix':'vzwpix.com',
 			'ATT':'txt.att.net',
 			'SprintPCS-CDMA':'messaging.sprintpcs.com',
 			'VirginMobile':"vmobi.com"}
@@ -15,8 +16,10 @@ WIRELESS_LOOKUP = {	'VerizonWireless':'vtext.com',
 DEFAULT_CONFIG = "~/.tavernrc"
 
 import subprocess, smtplib, sys
+from email import Encoders
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.MIMEBase import MIMEBase
 from optparse import OptionParser
 from socket import gethostname
 import os
@@ -59,6 +62,8 @@ options = OptionParser()
 options.add_option("-c", help="The command you want to run.", dest="cmd", default=None)
 options.add_option("-f", help="Configuration file.  Default is ~/.tavernrc", dest="configFile", default=DEFAULT_CONFIG)
 options.add_option("-v", help="Show debug messages when connecting to the mail server.", dest="mailDebug", default=False,action="store_true")
+options.add_option("-m", help="Message to send", dest="message", default="nomessage")
+options.add_option("-a", help="Attachment (not supported on basic SMS services)", dest="attachment_file_path")
 opts, args = options.parse_args()
 
 opts.configFile = os.path.expanduser(opts.configFile)
@@ -95,10 +100,18 @@ if CONFIGITEMS["EMAILTARGET"] != "undef":
 cmdExec = subprocess.Popen([opts.cmd], shell=True)
 rt = cmdExec.wait()
 
-msgBody = opts.cmd + " rt=" + str(rt)
-msg = MIMEMultipart('alternative')
+#msgBody = opts.cmd + " rt=" + str(rt)
+msgBody = opts.message
+msg = MIMEMultipart()
 msg['From'] = gethostname()
 msg.attach(MIMEText(msgBody, 'plain'))
+
+part = MIMEBase('application', 'octet-stream')
+if opts.attachment_file_path != "":
+	part.set_payload(open(opts.attachment_file_path, "rb").read())
+	Encoders.encode_base64(part)
+	part.add_header('Content-Disposition', 'attachment; filename="image.png"')
+	msg.attach(part)
 
 for DEST_EMAIL in DEST_EMAIL_ADDRESSES:
 	msg['To'] = DEST_EMAIL
